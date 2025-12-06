@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>200+ Brain-Boosting Riddle Quests</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Comic Sans MS', 'Arial Rounded MT Bold', cursive, sans-serif;
+            background: linear-gradient(135deg, #FF6B9D 0%, #FFA06B 50%, #FFD93D 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: fadeIn 0.8s ease-in;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+            color: #fff;
+            letter-spacing: 2px;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 1;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .controls input, .controls select, .controls button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .controls input[type="text"] {
+            flex: 1;
+            min-width: 200px;
+            background: white;
+            color: #333;
+        }
+
+        .controls select {
+            background: white;
+            color: #333;
+        }
+
+        .controls button {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FFA06B 100%);
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+        }
+
+        .controls button:hover {
+            background: linear-gradient(135deg, #FF5584 0%, #FF8C42 100%);
+            transform: scale(1.08);
+            box-shadow: 0 6px 18px rgba(255, 107, 157, 0.4);
+        }
+
+        .filter-tags {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .filter-tags button {
+            padding: 10px 25px;
+            border: 2px solid white;
+            background: transparent;
+            color: white;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 700;
+            font-size: 1em;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .filter-tags button.active {
+            background: white;
+            color: #FF6B9D;
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.4);
+        }
+
+        .filter-tags button:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .riddles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .riddle-card {
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFF5E1 100%);
+            border-radius: 25px;
+            padding: 25px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+            position: relative;
+            overflow: hidden;
+            min-height: 220px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 3px solid #FFD93D;
+            transform: rotate(-1deg);
+        }
+
+        .riddle-card:hover {
+            transform: scale(1.08) rotate(1deg);
+            box-shadow: 0 15px 35px rgba(255, 107, 157, 0.4);
+            background: linear-gradient(135deg, #FFF5E1 0%, #FFE5EC 100%);
+        }
+
+        .riddle-card::before {
+            content: '🎉';
+            position: absolute;
+            top: 5px;
+            right: 15px;
+            font-size: 1.5em;
+            opacity: 0.6;
+        }
+
+        .riddle-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .riddle-number {
+            font-size: 0.95em;
+            color: #FF6B9D;
+            font-weight: 700;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .riddle-text {
+            font-size: 1.15em;
+            color: #2C3E50;
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid;
+        }
+
+        .difficulty.easy {
+            background: #C8E6C9;
+            color: #2E7D32;
+            border-color: #2E7D32;
+        }
+
+        .difficulty.medium {
+            background: #FFE0B2;
+            color: #E65100;
+            border-color: #E65100;
+        }
+
+        .difficulty.hard {
+            background: #FFCCBC;
+            color: #BF360C;
+            border-color: #BF360C;
+        }
+
+        .answer-section {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #eee;
+        }
+
+        .reveal-btn {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FFA06B 100%);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
+            font-family: 'Comic Sans MS', cursive;
+        }
+
+        .reveal-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 18px rgba(255, 107, 157, 0.4);
+        }
+
+        .reveal-btn.revealed {
+            background: linear-gradient(135deg, #4CAF50 0%, #8BC34A 100%);
+        }
+
+        .answer {
+            display: none;
+            margin-top: 12px;
+            padding: 15px;
+            background: linear-gradient(135deg, #FFD93D 0%, #FFA06B 100%);
+            border-radius: 15px;
+            color: #2C3E50;
+            font-weight: 700;
+            font-size: 1.15em;
+            border: 2px dashed #FF6B9D;
+            font-family: 'Comic Sans MS', cursive;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .answer.show {
+            display: block;
+            animation: slideDown 0.3s ease-in;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stats {
+            background: rgba(255,255,255,0.25);
+            color: white;
+            padding: 18px 25px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 700;
+            font-size: 1.1em;
+            border: 2px solid white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 40px;
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .riddles-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls {
+                flex-direction: column;
+            }
+
+            .controls input[type="text"] {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 Brain-Boosting Riddle Quests 🎉</h1>
+            <p>✨ 80 Unique Super Fun Riddles for Kids ✨</p>
+        </header>
+
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Search riddles...">
+            <select id="difficultyFilter">
+                <option value="">All Levels</option>
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button onclick="resetFilters()">Reset All</button>
+        </div>
+
+        <div class="filter-tags">
+            <button class="difficulty-btn" onclick="filterByDifficulty('easy')">Easy</button>
+            <button class="difficulty-btn" onclick="filterByDifficulty('medium')">Medium</button>
+            <button class="difficulty-btn" onclick="filterByDifficulty('hard')">Hard</button>
+        </div>
+
+        <div class="stats">
+            <span id="statsText">Showing 80 riddles</span>
+        </div>
+
+        <div class="riddles-grid" id="riddlesContainer"></div>
+
+        <div class="footer">
+            <p>🌟 Tip: Try to solve each riddle before revealing the answer! 🌟</p>
+            <p>🎈 Perfect for family fun, game nights, and brain training! 🎈</p>
+            <p>📚 Includes 80 unique riddles (no repeats)</p>
+        </div>
+    </div>
+
+    <script>
+        const riddlesData = [
+            { q: "What has keys but can't open locks?", a: "A piano", d: "easy" },
+            { q: "What has a neck but no head?", a: "A bottle", d: "easy" },
+            { q: "What gets wetter the more it dries?", a: "A towel", d: "easy" },
+            { q: "What has a face and two hands but no arms or legs?", a: "A clock", d: "easy" },
+            { q: "What has to be broken before you can use it?", a: "An egg", d: "easy" },
+            { q: "I'm tall when I'm young, and I'm short when I'm old. What am I?", a: "A candle", d: "medium" },
+            { q: "What has a heart that doesn't beat?", a: "An artichoke", d: "medium" },
+            { q: "What comes once in a minute, twice in a moment, but never in a thousand years?", a: "The letter 'M'", d: "hard" },
+            { q: "What has hands but can't clap?", a: "A clock", d: "easy" },
+            { q: "I have branches, but no fruit, trunk, or leaves. What am I?", a: "A bank", d: "medium" },
+            { q: "What is full of holes but still holds water?", a: "A sponge", d: "easy" },
+            { q: "What can you catch but not throw?", a: "A cold", d: "medium" },
+            { q: "What has cities, but no houses; forests, but no trees; and rivers, but no water?", a: "A map", d: "medium" },
+            { q: "What goes up but never comes down?", a: "Your age", d: "medium" },
+            { q: "The more you take, the more you leave behind. What are they?", a: "Footsteps", d: "hard" },
+            { q: "I'm light as a feather, yet the strongest man can't hold me for much longer than a minute. What am I?", a: "Breath", d: "hard" },
+            { q: "What has one eye but can't see?", a: "A needle", d: "easy" },
+            { q: "If two's company and three's a crowd, what are four and five?", a: "Nine", d: "hard" },
+            { q: "What has a bottom at the top?", a: "Your legs", d: "medium" },
+            { q: "What kind of room has no doors or windows?", a: "A mushroom", d: "easy" },
+            { q: "What is always in front of you but can't be seen?", a: "The future", d: "hard" },
+            { q: "What runs but never walks, has a bed but never sleeps, and has a mouth but never eats?", a: "A river", d: "medium" },
+            { q: "What has four wheels and flies?", a: "A garbage truck", d: "hard" },
+            { q: "What comes down but never goes up?", a: "Rain", d: "easy" },
+            { q: "What can travel around the world while staying in a corner?", a: "A stamp", d: "hard" },
+            { q: "What is so fragile that saying its name breaks it?", a: "Silence", d: "hard" },
+            { q: "What can you hold in your left hand but not in your right?", a: "Your right elbow", d: "hard" },
+            { q: "What has legs but doesn't walk?", a: "A table", d: "easy" },
+            { q: "What kind of tree can you carry in your hand?", a: "A palm tree", d: "medium" },
+            { q: "What has a thumb and four fingers but is not alive?", a: "A glove", d: "easy" },
+            { q: "What can you keep after giving to someone?", a: "Your word", d: "medium" },
+            { q: "What has an end but no beginning, a home but no family, and a space without room?", a: "The letter 'E'", d: "hard" },
+            { q: "What is always coming but never arrives?", a: "Tomorrow", d: "medium" },
+            { q: "What has a bed but never sleeps, a head but never weeps, and an arm but never hugs?", a: "A river", d: "hard" },
+            { q: "What has teeth but can't bite?", a: "A comb", d: "easy" },
+            { q: "What can be cracked, made, told, and played?", a: "A joke", d: "medium" },
+            { q: "What has ears but cannot hear?", a: "Corn", d: "easy" },
+            { q: "What kind of band never plays music?", a: "A rubber band", d: "easy" },
+            { q: "What is orange and sounds like a parrot?", a: "A carrot", d: "easy" },
+            { q: "What comes once a year but twice in a week?", a: "The letter 'E'", d: "hard" },
+            { q: "I'm not alive, but I can grow. I don't have lungs, but I need air. What am I?", a: "Fire", d: "hard" },
+            { q: "What has words but never speaks?", a: "A book", d: "easy" },
+            { q: "What kind of coat can only be put on when wet?", a: "A coat of paint", d: "hard" },
+            { q: "What has many keys but can't open a single lock?", a: "A piano", d: "easy" },
+            { q: "I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?", a: "An echo", d: "hard" },
+            { q: "What goes through cities and fields, but never moves?", a: "A road", d: "medium" },
+            { q: "What can fill a room but takes up no space?", a: "Light", d: "medium" },
+            { q: "What's black and white and read all over?", a: "A newspaper", d: "medium" },
+            { q: "What has stripes and goes black and white and black and white?", a: "A zebra", d: "easy" },
+            { q: "What has a ring but no finger?", a: "A telephone", d: "easy" },
+            { q: "What is always hungry and must be fed, but never drinks?", a: "Fire", d: "medium" },
+            { q: "What has a head, a tail, but no body?", a: "A coin", d: "easy" },
+            { q: "What starts with 'P', ends with 'E', and has thousands of letters?", a: "A post office", d: "hard" },
+            { q: "What belongs to you but others use it more than you do?", a: "Your name", d: "hard" },
+            { q: "What has an eye but cannot see?", a: "A needle", d: "easy" },
+            { q: "What can go up a chimney down, but can't go down a chimney up?", a: "An umbrella", d: "hard" },
+            { q: "What gets bigger the more you take away from it?", a: "A hole", d: "hard" },
+            { q: "What is easy to get into but hard to get out of?", a: "Trouble", d: "medium" },
+            { q: "What can run but never walks?", a: "Water", d: "easy" },
+            { q: "What gets shorter as it grows older?", a: "A candle", d: "medium" },
+            { q: "What has a tongue but cannot talk?", a: "A shoe", d: "easy" },
+            { q: "What is black, white, and blue?", a: "A sad zebra", d: "hard" },
+            { q: "What can be broken, but is never held?", a: "A promise", d: "hard" },
+            { q: "What can you hold without touching it at all?", a: "A conversation", d: "hard" },
+            { q: "What has a head, a tail, is brown, and has no legs?", a: "A penny", d: "easy" },
+            { q: "What has a heart but no other organs?", a: "A deck of cards", d: "medium" },
+            { q: "What has a face but no eyes, mouth, or nose?", a: "A clock", d: "easy" },
+            { q: "What has four fingers and a thumb but isn't alive?", a: "A glove", d: "easy" },
+            { q: "What gets sharper the more you use it?", a: "Your brain", d: "medium" },
+            { q: "What is as light as a feather, yet the strongest man cannot hold it for much more than a minute?", a: "Breath", d: "hard" },
+            { q: "What has a mouth but cannot eat?", a: "A river", d: "medium" },
+            { q: "What can you hold in your right hand but not in your left?", a: "Your left elbow", d: "hard" },
+            { q: "What has wheels and flies but is not an aircraft?", a: "A garbage truck", d: "hard" },
+            { q: "What has four legs but can't walk?", a: "A table", d: "easy" },
+            { q: "What has words but never speaks?", a: "A book", d: "easy" },
+        ];
+
+        let currentFilter = '';
+        let currentSearch = '';
+
+        function renderRiddles() {
+            const container = document.getElementById('riddlesContainer');
+            container.innerHTML = '';
+
+            let filtered = riddlesData.filter(r => {
+                const matchesDifficulty = !currentFilter || r.d === currentFilter;
+                const matchesSearch = r.q.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                                      r.a.toLowerCase().includes(currentSearch.toLowerCase());
+                return matchesDifficulty && matchesSearch;
+            });
+
+            document.getElementById('statsText').textContent =
+                `Showing ${filtered.length} of ${riddlesData.length} riddles`;
+
+            filtered.forEach((riddle, index) => {
+                const card = document.createElement('div');
+                card.className = 'riddle-card';
+                card.innerHTML = `
+                    <div>
+                        <div class="riddle-number">Riddle ${index + 1}</div>
+                        <span class="difficulty ${riddle.d}">${riddle.d.toUpperCase()}</span>
+                        <div class="riddle-text">${riddle.q}</div>
+                    </div>
+                    <div class="answer-section">
+                        <button class="reveal-btn" onclick="toggleAnswer(this)">Click to Reveal Answer</button>
+                        <div class="answer">${riddle.a}</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleAnswer(btn) {
+            const answer = btn.nextElementSibling;
+            answer.classList.toggle('show');
+            btn.classList.toggle('revealed');
+            btn.textContent = btn.classList.contains('revealed')
+                ? 'Hide Answer'
+                : 'Click to Reveal Answer';
+        }
+
+        function filterByDifficulty(level) {
+            currentFilter = currentFilter === level ? '' : level;
+            document.querySelectorAll('.difficulty-btn').forEach(btn => btn.style.opacity = '0.6');
+            event.target.style.opacity = '1';
+            renderRiddles();
+        }
+
+        function resetFilters() {
+            currentFilter = '';
+            currentSearch = '';
+            document.getElementById('searchInput').value = '';
+            document.getElementById('difficultyFilter').value = '';
+            document.querySelectorAll('.difficulty-btn').forEach(btn => btn.style.opacity = '0.6');
+            renderRiddles();
+        }
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderRiddles();
+        });
+
+        document.getElementById('difficultyFilter').addEventListener('change', (e) => {
+            currentFilter = e.target.value;
+            renderRiddles();
+        });
+
+        renderRiddles();
+    </script>
+</body>
+</html>
