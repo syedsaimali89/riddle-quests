@@ -19,6 +19,11 @@
             overflow-x: hidden;
         }
 
+        /* Force non-italic text on all main elements (fix for phones) */
+        body, h1, h2, h3, p, button, .riddle-text, .stats, .footer, .difficulty {
+            font-style: normal;
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
